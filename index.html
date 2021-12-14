@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script>
+
+        var arr = [];
+
+        for(var i = 0; i < 10; i++){
+            if(i == 5) arr[i] = 0;
+            else arr[i] = Math.floor(Math.random()*100+1);
+        }
+
+        // минимальный по модулю элемент массива
+
+        var minimum = arr[0];
+        for(var i = 0; i < arr.length; i++){
+            var temp = arr[i];
+            if(temp < 0) {
+                temp = temp * (-1);
+            }
+            
+            if(minimum > temp) {
+                minimum = temp;
+            }
+        }
+
+        alert("Минимальное по модулю число - " + minimum);
+
+        // Сумма модулей элементов массива расположенных после первого элемента равного 0
+
+        var indexZero = arr.indexOf(0); //Нахождение индекс нужного числа через indexOf
+        var sum = 0;
+
+        for(var i = indexZero; i < arr.length; i++){
+            var temp = arr[i];
+            if(temp < 0) {
+                temp = temp * (-1);
+            }
+
+            sum += temp;
+        }
+
+        alert("Сумма всех модульных элементов после 0 равна " + sum);
+
+        // Массив, в котором в начале идут чётные числа, а потом нечётные
+
+        var masTwo = [];
+        var counterTwo = 0;
+
+        var masNotTwo = [];
+        var counterNotTwo = 0;
+
+        // Нахождение чётных и нечётных
+        for(var i = 0; i < arr.length; i++){
+            if(arr[i]%2==0){
+                masTwo[counterTwo] = arr[i];
+                counterTwo++;
+            }
+            else{
+                masNotTwo[counterNotTwo] = arr[i];
+                counterNotTwo++;
+            }
+        }
+
+        var countArr = 0;
+        // Запись чётных
+        for(var i = 0; i < masTwo.length; i++){
+            arr[countArr] = masTwo[i];
+            countArr++;
+        }
+
+        //Запись нечётных
+        for(var i = 0; i < masNotTwo.length; i++){
+            arr[countArr] = masNotTwo[i];
+            countArr++;
+        }
+
+        alert("В начале идут чётные числа, а потом нечётные - " + arr);
+    </script>
+</body>
+</html>
